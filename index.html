@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISCOM INTELLIGENCE SYSTEM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b101a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-cyan: #00f2ff;
+            --accent-purple: #bc13fe;
+            --text-main: #e0e6ed;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 10% 20%, #162032 0%, #0b101a 90%);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* --- LOGIN MODAL (Simulasi) --- */
+        #login-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .login-box {
+            background: rgba(11, 16, 26, 0.8);
+            border: 1px solid var(--accent-cyan);
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            width: 300px;
+        }
+
+        .login-input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 20px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-muted);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2em;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .login-input:focus {
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        .btn-enter {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: linear-gradient(45deg, var(--accent-cyan), #00aaff);
+            border: none;
+            color: black;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-enter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+
+        .title h1 { margin: 0; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: linear-gradient(to right, #fff, var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title span { font-size: 0.8em; color: var(--text-muted); letter-spacing: 4px; }
+
+        .clock-container {
+            text-align: right;
+        }
+        .clock { font-size: 2em; font-weight: 600; color: var(--accent-cyan); text-shadow: 0 0 10px rgba(0, 242, 255, 0.4); }
+        .user-badge { font-size: 0.9em; color: var(--accent-purple); border: 1px solid var(--accent-purple); padding: 2px 8px; border-radius: 4px; margin-top: 5px; display: inline-block; }
+
+        /* --- TABLE STYLE --- */
+        .glass-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px; /* Jarak antar baris */
+        }
+
+        .glass-table th {
+            text-align: left;
+            padding: 15px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glass-table tr.data-row {
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-table td {
+            padding: 15px;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            vertical-align: top;
+        }
+
+        .glass-table td:first-child { border-left: 1px solid var(--glass-border); border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+        .glass-table td:last-child { border-right: 1px solid var(--glass-border); border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+
+        /* Hover Effect */
+        .glass-table tr.data-row:hover {
+            transform: scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px; height: 20px;
+            border: 2px solid var(--text-muted);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.3s;
+        }
+        .custom-checkbox:checked {
+            background-color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        /* --- COMPLETED STATE --- */
+        tr.completed {
+            opacity: 0.6;
+            background: rgba(0, 0, 0, 0.4) !important;
+        }
+        tr.completed td {
+            color: #555;
+        }
+        
+        /* Log Badge (Exec Detail) */
+        .exec-log {
+            display: none; /* Hidden by default */
+            margin-top: 5px;
+            font-size: 0.75em;
+            color: var(--accent-cyan) !important;
+            font-weight: bold;
+            background: rgba(0, 242, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border-left: 2px solid var(--accent-cyan);
+            animation: slideIn 0.5s ease;
+        }
+
+        tr.completed .exec-log {
+            display: inline-block; /* Show when completed */
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="color:var(--accent-cyan); margin:0;">IDENTIFICATION</h2>
+            <p style="color:var(--text-muted); font-size:0.9em;">Please enter your name to access Mission Control</p>
+            <input type="text" id="username-input" class="login-input" placeholder="Operator Name" autocomplete="off">
+            <br>
+            <button class="btn-enter" onclick="userLogin()">ACCESS GRANTED</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="title">
+            <span>SYSTEM: FISCOM 1447 H</span>
+            <h1>Mission Control Dashboard</h1>
+        </div>
+        <div class="clock-container">
+            <div class="clock" id="live-clock">00:00:00</div>
+            <div id="current-operator" class="user-badge">WAITING FOR LOGIN...</div>
+        </div>
+    </div>
+
+    <table class="glass-table">
+        <thead>
+            <tr>
+                <th width="5%">Done</th>
+                <th width="12%">Time</th>
+                <th width="10%">ID</th>
+                <th width="30%">Directive</th>
+                <th width="15%">PIC</th>
+                <th>Protocol & Status Log</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            </tbody>
+    </table>
+
+    <script>
+        let currentUser = "UNKNOWN";
+
+        // Login Logic
+        function userLogin() {
+            const inputName = document.getElementById('username-input').value;
+            if (inputName.trim() === "") {
+                alert("Identity Required.");
+                return;
+            }
+            currentUser = inputName.toUpperCase();
+            document.getElementById('current-operator').innerText = "OPERATOR: " + currentUser;
+            document.getElementById('login-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('login-overlay').style.display = 'none';
+            }, 500);
+        }
+
+        // Data SOP
+        const missions = [
+            { time: "07.00 - 07.30", id: "INIT-ALPHA", act: "SYSTEM INITIALIZATION (Briefing)", pic: "ALL CREW", sop: "(1) Seluruh Panitia berkumpul. (2) Sinkronisasi jam. (3) Cek mental." },
+            { time: "07.30 - 08.00", id: "GATE-OPEN", act: "CHECK-IN PROTOCOL (Registrasi)", pic: "FRONTLINE", sop: "(1) Verifikasi peserta. (2) Presensi. (3) Cegah antrean (bottleneck)." },
+            { time: "08.00 - 08.10", id: "LNCH-001", act: "MAIN LAUNCH (Pembukaan)", pic: "MC (FLIGHT DIR)", sop: "(1) Mic Check. (2) Fokus audiens 100%. (3) Tone: Semangat." },
+            { time: "08.10 - 08.20", id: "FREQ-HOLY", act: "AUDIO UPLINK (Tilawah)", pic: "PANITIA", sop: "(1) Sound jernih no feedback. (2) Suasana khidmat." },
+            { time: "08.20 - 08.50", id: "CMD-SPEECH", act: "COMMANDER BRIEFINGS", pic: "Ketua, Pembina, Takmir", sop: "(1) 08:20 Ketua PAR. (2) 08:30 Pembina. (3) 08:40 Takmir. (4) Kode waktu 1 menit." },
+            { time: "08.50 - 09.00", id: "PREP-ESSAY", act: "STAGE RECONFIGURATION (Persiapan)", pic: "PERKAP", sop: "(1) Steril panggung. (2) Cek HDMI/VGA. (3) File loaded." },
+            { time: "09.10 - 09.45", id: "DATA-STRM", act: "PAYLOAD: ESSAY (Presentasi 1-5)", pic: "TIME KEEPER", sop: "(1) Durasi 7 menit/org. (2) Timer terlihat peserta. (3) Urutan sesuai data." },
+            { time: "09.45 - 09.55", id: "COOL-DOWN", act: "SYSTEM REFRESH (Ice Breaking)", pic: "MC (FLIGHT DIR)", sop: "(1) Cairkan suasana. (2) Jaga energi audiens." },
+            { time: "09.55 - 10.05", id: "PREP-STORY", act: "RECONFIGURATION PHASE 2", pic: "LOGISTICS", sop: "(1) Cek mic stand/clip-on. (2) Atur lighting." },
+            { time: "10.05 - 11.17", id: "NARR-MODE", act: "PAYLOAD: STORY (Presentasi 1-10)", pic: "TIME KEEPER", sop: "(1) Durasi 7 menit/org. (2) Transisi maks 30 detik." },
+            { time: "11.17 - 11.30", id: "COOL-DOWN", act: "SYSTEM REFRESH II (Ice Breaking)", pic: "MC (FLIGHT DIR)", sop: "(1) Engagement sebelum jeda panjang." },
+            { time: "11.30 - 12.30", id: "SYS-IDLE", act: "RECHARGE CYCLE (ISHOMA)", pic: "ALL CREW", sop: "(1) Gantian sholat/makan. (2) Venue tetap dijaga." },
+            { time: "12.30 - 13.30", id: "CALC-MODE", act: "DATA PROCESSING (Rekap Nilai)", pic: "JURI & CREW", sop: "(1) Hening. (2) Cross-check nilai 2x (akurasi mutlak)." },
+            { time: "13.40 - 14.00", id: "AWRD-SEQ", act: "MISSION REPORT (Pengumuman)", pic: "MC, CREW, PERKAP", sop: "(1) Cek urutan piala. (2) Musik victory standby." },
+            { time: "14.00 - 14.15", id: "SHUT-DOWN", act: "MISSION COMPLETE (Penutupan)", pic: "MEDIA", sop: "(1) Foto bersama. (2) Zero Waste Protocol (Bersih-bersih)." }
+        ];
+
+        const tbody = document.getElementById('table-body');
+        
+        missions.forEach((m, index) => {
+            let row = document.createElement('tr');
+            row.className = "data-row";
+            // Kita kasih ID unik ke text log supaya bisa diisi nanti
+            let logId = `log-${index}`; 
+
+            row.innerHTML = `
+                <td style="text-align:center">
+                    <input type="checkbox" class="custom-checkbox" onclick="toggleRow(this, '${logId}')">
+                </td>
+                <td style="font-family:'Courier New'; letter-spacing:-1px;">${m.time}</td>
+                <td style="color:var(--accent-cyan); font-weight:bold;">${m.id}</td>
+                <td style="font-weight:600; color:#fff;">${m.act}</td>
+                <td><span style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; font-size:0.85em;">${m.pic}</span></td>
+                <td>
+                    ${m.sop}
+                    <div id="${logId}" class="exec-log"></div>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        function toggleRow(checkbox, logId) {
+            let row = checkbox.closest('tr');
+            let logElement = document.getElementById(logId);
+            
+            if (checkbox.checked) {
+                row.classList.add('completed');
+                // Ambil Waktu Saat Ini
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('id-ID');
+                
+                // Isi Text Log
+                logElement.innerHTML = `✓ EXECUTED BY <u>${currentUser}</u> AT [${timeStr}]`;
+            } else {
+                row.classList.remove('completed');
+                // Kosongkan Log kalau di-uncheck
+                logElement.innerHTML = "";
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').innerText = now.toLocaleTimeString('id-ID', { hour12: false });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Support Enter Key di Login
+        document.getElementById("username-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") { userLogin(); }
+        });
+    </script>
+</body>
+</html>
