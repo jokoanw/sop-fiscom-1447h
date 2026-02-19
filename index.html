@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q-Card FISCOM 1447 H - Master Edition</title>
+    <title>Q-Card FISCOM 1447 H - Perfect 10 Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -41,11 +41,11 @@
             display: flex;
             position: relative;
             page-break-after: always;
-            overflow: hidden; /* Garansi tidak ada teks keluar batas */
+            overflow: hidden; 
             border-radius: 8px;
         }
 
-        /* Sidebar Estetik & Ramping (Sesuai Konsep Awal yang Disukai) */
+        /* Sidebar Estetik & Ramping */
         .sidebar {
             width: 38mm;
             background: linear-gradient(180deg, var(--primary) 0%, #1e293b 100%);
@@ -120,34 +120,25 @@
             display: block;
             font-size: 8px;
             color: var(--accent);
-            letter-spacing: 4px;
-            margin-bottom: 3px;
+            letter-spacing: 2px;
+            margin-bottom: 3px; 
         }
 
         .card-number strong {
             font-family: 'Merriweather', serif;
-            font-size: 34px;
+            font-size: 38px;
             color: white;
             line-height: 1;
         }
 
-        /* Area Teks Super Lega */
+        /* Area Teks - Tanpa Judul, Padding Lebih Lega */
         .content {
             flex: 1;
-            padding: 12mm 15mm;
+            padding: 15mm;
             display: flex;
             flex-direction: column;
+            justify-content: center; /* Memastikan teks ada di tengah secara vertikal jika sedikit */
             gap: 16px;
-        }
-
-        .section-title {
-            font-family: 'Merriweather', serif;
-            color: var(--primary);
-            font-size: 16px;
-            font-weight: 700;
-            margin: 0 0 5px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #f1f5f9;
         }
 
         /* Sistem Grid Dialog - Rapi dan Presisi */
@@ -195,7 +186,8 @@
         @media print {
             @page { size: A5 landscape; margin: 0; }
             body { background-color: white; margin: 0; padding: 0; gap: 0; }
-            .qcard { box-shadow: none; border-radius: 0; }
+            .qcard { box-shadow: none; border-radius: 0; justify-content: flex-start; }
+            .content { justify-content: flex-start; padding-top: 15mm;}
         }
     </style>
 </head>
@@ -216,7 +208,6 @@
             <div class="card-number"><span>CARD</span><strong>01</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Muqaddimah & Penghormatan</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Assalamu’alaikum Warahmatullahi Wabarakatuh.<br>Alhamdulillahi rabbil 'alamin, wash-shalatu wassalamu 'ala asyrafil anbiya-i wal mursalin, wa 'ala alihi wa ashabihi ajma'in, amma ba'du.</div>
@@ -247,7 +238,6 @@
             <div class="card-number"><span>CARD</span><strong>02</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Sapaan Awal</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Puji syukur senantiasa kita panjatkan kehadirat Allah SWT, yang telah melimpahkan rahmat dan hidayah-Nya, sehingga kita dapat berkumpul di pagi yang cerah ini dalam acara FISCOM, Mafaza Islamic Competition 1447 Hijriah!</div>
@@ -283,7 +273,6 @@
             <div class="card-number"><span>CARD</span><strong>03</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Pembacaan Agenda</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Dan saya <strong>[Nama Kamu]</strong>. Kami berdua yang akan menemani teman-teman semua dari pagi sampai puncak acara nanti siang.</div>
@@ -326,7 +315,6 @@
             <div class="card-number"><span>CARD</span><strong>04</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Tilawah & Sambutan Awal</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Melangkah ke agenda selanjutnya, mari sejenak kita dengarkan lantunan ayat suci Al-Qur’an.</div>
@@ -364,7 +352,6 @@
             <div class="card-number"><span>CARD</span><strong>05</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Lanjutan Sambutan</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Terima kasih atas sambutannya. Sambutan kedua akan disampaikan oleh Pembina UPM Perpustakaan. Kepada Bapak/Ibu <strong>[Nama Pembina]</strong>, disilakan.</div>
@@ -397,7 +384,6 @@
             <div class="card-number"><span>CARD</span><strong>06</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Lomba Esai Ilmiah - Tata Tertib</h2>
             <div class="dialogue mc2">
                 <div class="tag">MC 2</div>
                 <div class="text">Nah, ini dia yang ditunggu-tunggu! Kita akan segera memasuki arena perlombaan yang pertama, yaitu Lomba Esai Ilmiah.</div>
@@ -428,7 +414,6 @@
             <div class="card-number"><span>CARD</span><strong>07</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Esai Ilmiah - Peserta 01</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Baik, mari kita mulai. Kita panggilkan peserta pertama dengan nomor undi 01, atas nama <strong>[Sebut Nama]</strong>. Waktu presentasi 7 menit dimulai dari Anda berbicara. Waktu dan tempat disilakan!</div>
@@ -461,7 +446,6 @@
             <div class="card-number"><span>CARD</span><strong>08</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Esai Ilmiah - Peserta 02 & Penutup</h2>
             <div class="dialogue mc2">
                 <div class="tag">MC 2</div>
                 <div class="text">Selanjutnya, mari kita bersiap menyambut peserta dengan nomor undi 02, atas nama <strong>[Sebut Nama]</strong>. Silakan menempati panggung. Waktu 7 menit Anda dimulai dari sekarang!</div>
@@ -499,7 +483,6 @@
             <div class="card-number"><span>CARD</span><strong>09</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Ice Breaking 1 & Lomba Cerpen</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Wah, suasananya lumayan tegang ya melihat para peserta diberondong pertanyaan oleh juri tadi. Biar pikiran kembali rileks, saatnya kita cairkan suasana!</div>
@@ -535,7 +518,6 @@
             <div class="card-number"><span>CARD</span><strong>10</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Lomba Cerpen - Peserta 01</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Tanpa berlama-lama lagi, mari kita sambut peserta pertama kita di kategori ini. Peserta dengan nomor undi 01, atas nama <strong>[Sebut Nama]</strong>, disilakan! Waktu Anda 7 menit dimulai dari sekarang.</div>
@@ -568,7 +550,6 @@
             <div class="card-number"><span>CARD</span><strong>11</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Lomba Cerpen - Peserta 02 & Penutup</h2>
             <div class="dialogue mc2">
                 <div class="tag">MC 2</div>
                 <div class="text">Langsung saja kita panggilkan penampil berikutnya. Peserta dengan nomor undi 02, atas nama <strong>[Sebut Nama]</strong>. Disilakan!</div>
@@ -596,7 +577,6 @@
             <div class="card-number"><span>CARD</span><strong>12</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Ice Breaking 2 & Ishoma</h2>
             <div class="dialogue mc2">
                 <div class="tag">MC 2</div>
                 <div class="text">Karya-karya cerpennya sukses bikin merinding dan terharu ya! Nggak nyangka ide-idenya sekeren itu.</div>
@@ -632,7 +612,6 @@
             <div class="card-number"><span>CARD</span><strong>13</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Pasca Ishoma & Pembuka Pengumuman</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Kami ingatkan kepada seluruh peserta untuk kembali berada di ruangan ini tepat pukul 12.30 karena kita akan langsung masuk ke momen puncak: pengumuman pemenang! Selamat beristirahat dan menunaikan ibadah shalat.</div>
@@ -667,7 +646,6 @@
             <div class="card-number"><span>CARD</span><strong>14</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Momen Puncak Pengumuman</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Tapi tentu saja, dalam sebuah kompetisi harus ada yang keluar sebagai pemenang. Ini adalah momen yang paling kita tunggu-tunggu sedari pagi. Jantung rasanya berdebar-debar ya! Siapakah yang akan membawa pulang piala Juara Lomba Esai Ilmiah dan Lomba Cerpen FISCOM 1447 Hijriah?</div>
@@ -695,7 +673,6 @@
             <div class="card-number"><span>CARD</span><strong>15</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Apresiasi & Penutupan Awal</h2>
             <div class="dialogue mc1">
                 <div class="tag">MC 1</div>
                 <div class="text">Sekali lagi, beri tepuk tangan yang paling meriah! Kami ucapkan selamat kepada para pemenang yang telah menorehkan prestasi gemilangnya hari ini.</div>
@@ -726,7 +703,6 @@
             <div class="card-number"><span>CARD</span><strong>16</strong></div>
         </div>
         <div class="content">
-            <h2 class="section-title">Salam Perpisahan</h2>
             <div class="dialogue mc2">
                 <div class="tag">MC 2</div>
                 <div class="text">Kami juga memohon maaf yang sebesar-besarnya apabila selama memandu acara, terdapat tutur kata, sikap, atau perbuatan yang kurang berkenan di hati. Semoga sisa ibadah puasa kita hari ini dan sebulan ke depan dilancarkan oleh Allah SWT.</div>
