@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q-Card MC FISCOM 1447 H - Slim Sidebar Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Q-Card FISCOM 1447 H - Superior Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0B132B; 
-            --primary-light: #1C2541;
-            --accent-gold: #D4AF37;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --mc1-bg: #E2E8F0;
-            --mc1-text: #0F172A;
-            --mc2-bg: #FEF08A;
-            --mc2-text: #713F12;
-            --both-bg: #A7F3D0;
-            --both-text: #064E3B;
+            --midnight: #0A1128;
+            --gold: #C5A059;
+            --gold-light: #E8D3A2;
+            --text-dark: #1C1C1C;
+            --text-grey: #5A5A5A;
+            --paper: #FCFCFC; /* Off-white to reduce stage glare */
         }
 
         * {
@@ -28,234 +23,193 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #E2E8F0;
+            background-color: #E5E5E5;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
-        /* Kanvas A5 Landscape */
+        /* Standar Presisi A5 Landscape */
         .qcard {
             width: 210mm;
             height: 148mm;
-            background-color: #FFFFFF;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background-color: var(--paper);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             display: flex;
             position: relative;
             overflow: hidden; 
             page-break-after: always;
-            border-radius: 8px;
         }
 
-        /* Sidebar Dipersempit (Slim) */
+        /* Sidebar Super Minimalis & Elegan */
         .sidebar {
-            width: 38mm; /* Disusutkan drastis dari 58mm */
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-            color: #FFFFFF;
-            padding: 12mm 6mm; /* Padding disesuaikan */
+            width: 32mm;
+            background-color: var(--midnight);
+            color: white;
+            padding: 12mm 5mm;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            border-right: 2px solid var(--gold);
             position: relative;
-            border-right: 3px solid var(--accent-gold);
+        }
+
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            top: 5px; bottom: 5px; right: 2px;
+            width: 1px;
+            background-color: rgba(197, 160, 89, 0.3);
         }
 
         .brand h1 {
-            font-family: 'Merriweather', serif;
-            color: var(--accent-gold);
-            font-size: 18px; /* Diperkecil agar muat */
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 16px;
             margin: 0;
-            line-height: 1.2;
             text-align: center;
+            letter-spacing: 1px;
         }
 
         .brand p {
-            font-size: 8px;
-            letter-spacing: 1px;
-            color: #94A3B8;
-            margin: 4px 0 15px 0;
+            font-size: 7.5px;
+            letter-spacing: 2px;
+            color: #A0A0A0;
+            margin: 4px 0 0 0;
             text-transform: uppercase;
             text-align: center;
         }
 
-        .timeline {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 5px;
+        .card-number-wrapper {
+            margin-top: auto;
+            text-align: center;
         }
 
-        .step {
-            font-size: 9.5px; /* Teks timeline diperkecil */
-            color: #94A3B8;
-            display: flex;
-            align-items: center;
-            line-height: 1.2;
+        .card-label {
+            font-size: 7px;
+            color: var(--gold-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: -5px;
         }
 
-        .step::before {
-            content: '';
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: #475569;
-            margin-right: 6px;
-            flex-shrink: 0;
-        }
-
-        .step.active {
-            color: #FFFFFF;
+        .card-num {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            color: white;
             font-weight: 700;
-            font-size: 10.5px;
+            line-height: 1;
         }
 
-        .step.active::before {
-            background-color: var(--accent-gold);
-            box-shadow: 0 0 6px var(--accent-gold);
-        }
-
-        /* Area Teks Utama - Mendapat Ruang Lebih Luas */
+        /* Area Naskah Utama */
         .content {
             flex: 1;
-            padding: 12mm 15mm; 
+            padding: 10mm 14mm;
             position: relative;
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(to right, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
         }
 
-        .content::after {
-            content: 'FISCOM';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            font-family: 'Merriweather', serif;
-            font-size: 90px;
-            color: rgba(0,0,0,0.02);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .card-title {
-            font-family: 'Merriweather', serif;
-            color: var(--primary-dark);
-            font-size: 18px;
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--midnight);
+            font-size: 16px;
             font-weight: 700;
             margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #E0E0E0;
             padding-bottom: 6px;
-            border-bottom: 2px solid #F1F5F9;
-            position: relative;
-            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .dialogue-wrapper {
+        .section-title span {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 9px;
+            color: var(--gold);
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Struktur Teks Anti-Tumpang Tindih */
+        .dialogue-list {
             display: flex;
             flex-direction: column;
-            gap: 14px; /* Sedikit dilonggarkan */
-            position: relative;
-            z-index: 1;
+            gap: 12px; /* Spasi ideal antar dialog */
         }
 
-        .dialogue {
+        .row {
             display: grid;
-            grid-template-columns: 55px 1fr; /* Kolom tag nama lebih presisi */
-            gap: 15px;
+            grid-template-columns: 55px 1fr;
+            gap: 16px;
             align-items: start;
         }
 
-        .tag {
+        .speaker {
             font-size: 11px;
             font-weight: 700;
-            padding: 5px 0;
-            text-align: center;
-            border-radius: 4px;
+            padding: 4px 0;
+            text-align: right;
+            border-right: 2px solid;
+            padding-right: 8px;
             letter-spacing: 0.5px;
         }
 
-        .mc1 .tag { background-color: var(--mc1-bg); color: var(--mc1-text); }
-        .mc2 .tag { background-color: var(--mc2-bg); color: var(--mc2-text); }
-        .both .tag { background-color: var(--both-bg); color: var(--both-text); }
+        .mc1 .speaker { color: #1E3A8A; border-color: #1E3A8A; }
+        .mc2 .speaker { color: #B45309; border-color: #B45309; }
+        .both .speaker { color: #047857; border-color: #047857; }
 
         .text {
-            font-size: 15.5px; /* Diperbesar agar MC lebih mudah baca */
-            line-height: 1.6; /* Spasi antar baris lebih longgar */
-            color: var(--text-main);
+            font-size: 14px; /* Ukuran yang dipertahankan agar tidak terpotong */
+            line-height: 1.5;
+            color: var(--text-dark);
             margin: 0;
             padding-top: 1px;
+            font-weight: 500;
         }
 
         .text strong {
-            color: var(--primary-dark);
+            color: var(--midnight);
+            font-weight: 700;
         }
 
-        .action {
+        .action-row {
+            display: grid;
+            grid-template-columns: 55px 1fr;
+            gap: 16px;
+            margin: 2px 0;
+        }
+
+        .action-text {
             grid-column: 2;
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-grey);
             font-style: italic;
-            background-color: #F8FAFC;
+            background-color: #F5F5F5;
             padding: 6px 12px;
-            border-left: 3px solid #CBD5E1;
-            margin: -2px 0 2px 0;
-            border-radius: 0 4px 4px 0;
+            border-left: 2px solid var(--gold);
         }
 
-        .formula-box {
+        .loop-box {
             grid-column: 1 / -1;
-            border: 1px dashed var(--accent-gold);
-            background-color: #FFFAF0;
-            padding: 10px 12px;
-            border-radius: 6px;
+            border: 1px solid var(--gold);
+            padding: 10px;
+            background-color: rgba(197, 160, 89, 0.03);
             margin-top: 5px;
         }
+        
+        .loop-box .row { margin-bottom: 8px; }
+        .loop-box .row:last-child { margin-bottom: 0; }
 
-        .formula-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            text-align: center;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 10mm;
-            right: 15mm;
-            font-family: 'Merriweather', serif;
-            font-size: 45px;
-            color: rgba(15, 23, 42, 0.05);
-            line-height: 1;
-            font-weight: 700;
-            z-index: 0;
-        }
-
-        /* Print Settings */
         @media print {
-            @page {
-                size: A5 landscape;
-                margin: 0;
-            }
-            body {
-                background-color: white;
-                margin: 0;
-                padding: 0;
-                gap: 0;
-            }
-            .qcard {
-                box-shadow: none;
-                border-radius: 0;
-                width: 210mm;
-                height: 148mm;
-                page-break-after: always;
-                page-break-inside: avoid;
-            }
+            @page { size: A5 landscape; margin: 0; }
+            body { background-color: white; margin: 0; padding: 0; gap: 0; }
+            .qcard { box-shadow: none; border-radius: 0; width: 210mm; height: 148mm; page-break-after: always; }
         }
     </style>
 </head>
@@ -263,357 +217,356 @@
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step active">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">01</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">1. Pembukaan & Penghormatan</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
+            <div class="section-title">Muqaddimah <span>1 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
                     <div class="text">Assalamu’alaikum Warahmatullahi Wabarakatuh.<br>Alhamdulillahi rabbil 'alamin, wash-shalatu wassalamu 'ala asyrafil anbiya-i wal mursalin, wa 'ala alihi wa ashabihi ajma'in, amma ba'du.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">
-                        Yth. Pembina UPM Perpustakaan, Bpk/Ibu <strong>[Sebut Nama & Gelar]</strong>.<br>
-                        Ykh. Ketua PAR, Sdr. <strong>[Sebut Nama]</strong>.<br>
-                        Ykh. Ketua Takmir Harian, Sdr. <strong>[Sebut Nama]</strong>.
-                    </div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Yang terhormat, Pembina UPM Perpustakaan, Bapak/Ibu <strong>[Sebut Nama beserta gelar]</strong>.<br>Yang kami hormati, Ketua PAR, Saudara <strong>[Sebut Nama]</strong>.<br>Yang kami hormati, Ketua Takmir Harian, Saudara <strong>[Sebut Nama]</strong>.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Ykh. segenap Dewan Juri FISCOM 1447 Hijriah, serta yang kami banggakan, seluruh peserta Mafaza Islamic Competition dan hadirin sekalian.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Yang kami hormati, segenap Dewan Juri FISCOM 1447 Hijriah.<br>Serta yang kami banggakan, seluruh peserta Mafaza Islamic Competition dan hadirin sekalian.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Puji syukur senantiasa kita panjatkan kehadirat Allah SWT, yang telah melimpahkan rahmat dan hidayah-Nya, sehingga kita dapat berkumpul di pagi yang cerah ini dalam acara FISCOM!</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Puji syukur senantiasa kita panjatkan kehadirat Allah SWT, yang telah melimpahkan rahmat dan hidayah-Nya, sehingga kita dapat berkumpul di pagi yang cerah ini dalam acara FISCOM, Mafaza Islamic Competition 1447 Hijriah!</div>
                 </div>
             </div>
-            <div class="page-number">01</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step active">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">02</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">2. Sapaan & Pembacaan Agenda</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Shalawat serta salam tak lupa kita haturkan kepada junjungan kita, Nabi Agung Muhammad SAW.<br>Selamat pagi semuanya! Gimana kabarnya hari ini?</div>
+            <div class="section-title">Sapaan & Agenda <span>2 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Shalawat serta salam tak lupa kita haturkan kepada junjungan kita, Nabi Agung Muhammad SAW, beserta keluarga, sahabat, dan umatnya hingga akhir zaman.</div>
                 </div>
-                <div class="dialogue"><div class="action">[ Arahkan mik ke audiens - Tunggu respons ]</div></div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Selamat pagi semuanya! Gimana kabarnya hari ini?</div>
+                </div>
+                <div class="action-row"><div class="action-text">(Tunggu respon audiens)</div></div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
                     <div class="text">Wah, luar biasa! Kenalin, saya <strong>[Nama Partner]</strong>...</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Dan saya <strong>[Nama Kamu]</strong>. Kami berdua yang akan menemani teman-teman dari pagi sampai puncak acara nanti siang.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Dan saya <strong>[Nama Kamu]</strong>. Kami berdua yang akan menemani teman-teman semua dari pagi sampai puncak acara nanti siang.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Hari ini bakal seru banget! Setelah pembukaan, kita akan memanaskan panggung dengan Presentasi Esai Ilmiah, Lomba Cerpen, Ice Breaking, dan puncaknya Pengumuman Juara!</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Hari ini bakal seru banget karena FISCOM jadi ajang unjuk gigi karya-karya terbaik dari teman-teman semua.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Untuk memberkahi acara kita hari ini, marilah kita buka FISCOM 1447 Hijriah dengan membaca Basmalah bersama-sama.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Tentu saja. Nanti setelah pembukaan, kita akan langsung memanaskan panggung dengan Presentasi Esai Ilmiah, lalu dilanjut dengan penampilan memukau di Lomba Cerpen.</div>
                 </div>
-                <div class="dialogue both">
-                    <div class="tag">ALL</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Nggak cuma itu, panitia juga udah nyiapin Ice Breaking yang pastinya seru abis, dan puncaknya nanti siang adalah Pengumuman Juara! Jadi pastikan teman-teman semangat sampai akhir ya!</div>
+                </div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Baik, untuk memberkahi dan melancarkan seluruh rangkaian acara kita hari ini, marilah kita buka FISCOM 1447 Hijriah dengan membaca Basmalah bersama-sama.</div>
+                </div>
+                <div class="row both">
+                    <div class="speaker">BERSAMA</div>
                     <div class="text">Bismillahirrahmanirrahim.</div>
                 </div>
             </div>
-            <div class="page-number">02</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step active">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">03</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">3. Tilawah & Sambutan</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
+            <div class="section-title">Tilawah & Sambutan <span>3 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
                     <div class="text">Melangkah ke agenda selanjutnya, mari sejenak kita dengarkan lantunan ayat suci Al-Qur’an.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Yang akan dilantunkan oleh Saudara/i <strong>[Nama Petugas]</strong>. Kepadanya, kami persilakan.</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Yang akan dilantunkan oleh Saudara/i <strong>[Nama Petugas Tilawah]</strong>. Kepadanya, kami persilakan.</div>
                 </div>
-                <div class="dialogue"><div class="action">[ Sesi Tilawah Berlangsung ]</div></div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Shadaqallahul 'adzim. Semoga lantunan ayat suci tadi membawa ketenangan dan pahala bagi kita semua.</div>
+                <div class="action-row"><div class="action-text">(Sesi Tilawah)</div></div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Shadaqallahul 'adzim. Semoga lantunan ayat suci tadi membawa ketenangan dan pahala bagi kita semua yang mendengarkan.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Selanjutnya sambutan. Pertama, oleh Ketua PAR. Kepada Sdr. <strong>[Nama Ketua PAR]</strong>, disilakan. <em>(Lanjut Sambutan ke-2 oleh Pembina UPM Bpk/Ibu <strong>[Nama Pembina]</strong>)</em></div>
+                <div class="action-row"><div class="action-text">(08.20 – 08.50) SESI SAMBUTAN</div></div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Selanjutnya, kita akan mendengarkan beberapa sambutan. Sambutan yang pertama akan disampaikan oleh Ketua PAR. Kepada Saudara <strong>[Nama Ketua PAR]</strong>, disilakan.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Terima kasih. Terakhir, sekaligus membuka resmi perlombaan, oleh Ketua Takmir Harian. Kepada Sdr. <strong>[Nama Ketua Takmir]</strong>, disilakan.</div>
+                <div class="action-row"><div class="action-text">(Sambutan 1)</div></div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Terima kasih atas sambutannya. Sambutan kedua akan disampaikan oleh Pembina UPM Perpustakaan. Kepada Bapak/Ibu <strong>[Nama Pembina]</strong>, disilakan.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Terima kasih atas sambutan dan motivasinya.</div>
+                <div class="action-row"><div class="action-text">(Sambutan 2)</div></div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Kami sampaikan terima kasih. Sambutan terakhir, sekaligus membuka secara resmi rangkaian perlombaan kita hari ini, akan disampaikan oleh Ketua Takmir Harian. Kepada Saudara <strong>[Nama Ketua Takmir]</strong>, disilakan.</div>
+                </div>
+                <div class="action-row"><div class="action-text">(Sambutan 3)</div></div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Terima kasih kepada Saudara <strong>[Nama Ketua Takmir]</strong> atas sambutan dan motivasinya.</div>
                 </div>
             </div>
-            <div class="page-number">03</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step active">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">04</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">4. Lomba Esai Ilmiah</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Ini dia yang ditunggu-tunggu! Kita akan masuki Lomba Esai Ilmiah.</div>
+            <div class="section-title">Perlombaan Esai Ilmiah <span>4 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Nah, ini dia yang ditunggu-tunggu! Kita akan segera memasuki arena perlombaan yang pertama, yaitu Lomba Esai Ilmiah.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Setiap peserta memiliki waktu presentasi <strong>7 menit</strong>, dilanjutkan sesi tanya jawab bersama juri selama <strong>2 menit</strong>.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Sebelum peserta pertama tampil, kami akan membacakan tata tertib waktu terlebih dahulu. Setiap peserta memiliki waktu presentasi selama 7 menit. Setelah presentasi selesai, akan dilanjutkan dengan sesi tanya jawab bersama dewan juri selama 2 menit.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Mohon perhatikan timekeeper. Jika waktu habis, peserta diharap segera menyudahi pemaparannya.</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Betul. Mohon perhatikan panitia timekeeper di depan ya. Jika panitia memberikan kode waktu habis, peserta diharap segera menyudahi presentasi ataupun jawabannya.</div>
                 </div>
                 
-                <div class="formula-box">
-                    <div class="formula-title">FORMULA PEMANGGILAN PESERTA ESAI (01 S/D 05)</div>
-                    <div class="dialogue-wrapper" style="gap: 10px;">
-                        <div class="dialogue mc1">
-                            <div class="tag">MC 1</div>
-                            <div class="text">Peserta nomor urut <strong>[Sebut Nomor]</strong>, nama <strong>[Sebut Nama]</strong>. Waktu 7 menit disilakan!</div>
-                        </div>
-                        <div class="dialogue mc2">
-                            <div class="tag">MC 2</div>
-                            <div class="text">Waktu usai. Kepada dewan juri, disilakan memberikan pertanyaan. Waktu 2 menit.</div>
-                        </div>
-                        <div class="dialogue mc1">
-                            <div class="tag">MC 1</div>
-                            <div class="text">Waktu habis. Beri tepuk tangan untuk peserta <strong>[Sebut Nomor]</strong>! Silakan kembali.</div>
-                        </div>
+                <div class="loop-box">
+                    <div class="action-row" style="margin-bottom:8px;"><div class="action-text" style="color:var(--gold); font-weight:bold;">(Pola untuk Peserta 01 s/d 05)</div></div>
+                    <div class="row mc1">
+                        <div class="speaker">MC 1</div>
+                        <div class="text">Baik, mari kita mulai. Kita panggilkan peserta dengan nomor undi <strong>[Sebut Nomor]</strong>, atas nama <strong>[Sebut Nama]</strong>. Waktu presentasi 7 menit dimulai dari Anda berbicara. Waktu dan tempat disilakan!</div>
+                    </div>
+                    <div class="action-row"><div class="action-text">(Peserta Presentasi selama maksimal 7 menit)</div></div>
+                    <div class="row mc2">
+                        <div class="speaker">MC 2</div>
+                        <div class="text">Baik, waktu presentasi selama 7 menit telah usai. Selanjutnya kita masuk ke sesi tanya jawab. Kepada dewan juri yang terhormat, kami persilakan untuk memberikan pertanyaan atau tanggapan. Waktu 2 menit dimulai dari sekarang.</div>
+                    </div>
+                    <div class="action-row"><div class="action-text">(Sesi Tanya Jawab 2 Menit berlangsung)</div></div>
+                    <div class="row mc1">
+                        <div class="speaker">MC 1</div>
+                        <div class="text">Baik, waktu untuk sesi tanya jawab telah habis. Beri tepuk tangan yang meriah untuk peserta nomor urut <strong>[Sebut Nomor]</strong>! Silakan kembali ke tempat duduk. Pemaparan yang sangat luar biasa!</div>
                     </div>
                 </div>
 
-                <div class="dialogue mc1" style="margin-top: 5px;">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Penampilan peserta nomor urut 05 tadi menutup sesi Esai Ilmiah kita pagi ini.</div>
+                <div class="row mc1" style="margin-top: 5px;">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Penampilan dari peserta nomor urut 05 tadi sekaligus menutup sesi perlombaan Esai Ilmiah kita pagi ini. Tepuk tangan sekali lagi untuk seluruh peserta Esai Ilmiah!</div>
                 </div>
             </div>
-            <div class="page-number">04</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step active">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">05</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">5. Ice Breaking & Lomba Cerpen</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Suasananya lumayan tegang ya. Biar pikiran rileks, saatnya kita cairkan suasana! Kepada panitia Ice Breaking, silakan!</div>
+            <div class="section-title">Ice Breaking 1 & Lomba Cerpen <span>5 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Wah, suasananya lumayan tegang ya melihat para peserta diberondong pertanyaan oleh juri tadi. Biar pikiran kembali rileks, saatnya kita cairkan suasana!</div>
                 </div>
-                <div class="dialogue"><div class="action">[ Sesi Ice Breaking Berlangsung ]</div></div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Terima kasih panitia. Sekarang, Lomba Cerpen! Di sini ada 10 finalis. Aturan waktu sama: <strong>7 menit</strong> presentasi, <strong>2 menit</strong> tanya jawab.</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Setuju! Kita panggilkan teman-teman panitia untuk memimpin sesi Ice Breaking. Kepada panitia yang bertugas, silakan ambil alih panggung!</div>
+                </div>
+                <div class="action-row"><div class="action-text">(Sesi Ice Breaking)</div></div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Terima kasih kepada rekan-rekan panitia. Sekarang, kita lanjutkan ke kategori perlombaan kedua, yaitu Lomba Cerpen.</div>
+                </div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Di sini sudah ada 10 finalis yang siap mempresentasikan karya cerpen terbaik mereka. Aturan waktunya sama, yaitu 7 menit untuk presentasi/penampilan, dan 2 menit untuk sesi tanya jawab bersama juri.</div>
                 </div>
 
-                <div class="formula-box">
-                    <div class="formula-title">FORMULA PEMANGGILAN PESERTA CERPEN (01 S/D 10)</div>
-                    <div class="dialogue-wrapper" style="gap: 10px;">
-                        <div class="dialogue mc1">
-                            <div class="tag">MC 1</div>
-                            <div class="text">Sambut peserta nomor urut <strong>[Sebut Nomor]</strong>, nama <strong>[Sebut Nama]</strong>. Disilakan!</div>
-                        </div>
-                        <div class="dialogue mc2">
-                            <div class="tag">MC 2</div>
-                            <div class="text">Penampilan selesai. Kepada juri, persilakan tanggapannya dalam 2 menit.</div>
-                        </div>
-                        <div class="dialogue mc1">
-                            <div class="tag">MC 1</div>
-                            <div class="text">Waktu habis. Beri tepuk tangan gemuruh untuk peserta nomor <strong>[Sebut Nomor]</strong>!</div>
-                        </div>
+                <div class="loop-box">
+                    <div class="action-row" style="margin-bottom:8px;"><div class="action-text" style="color:var(--gold); font-weight:bold;">(Pola untuk Peserta Cerpen 01 s/d 10)</div></div>
+                    <div class="row mc1">
+                        <div class="speaker">MC 1</div>
+                        <div class="text">Tanpa berlama-lama lagi, mari kita sambut peserta dengan nomor undi <strong>[Sebut Nomor]</strong>, atas nama <strong>[Sebut Nama]</strong>, disilakan! Waktu Anda 7 menit dimulai dari sekarang.</div>
+                    </div>
+                    <div class="action-row"><div class="action-text">(Peserta Tampil selama maksimal 7 menit)</div></div>
+                    <div class="row mc2">
+                        <div class="speaker">MC 2</div>
+                        <div class="text">Waktu penampilan selesai. Kepada dewan juri, kami persilakan untuk memberikan tanggapan atau pertanyaan dalam waktu 2 menit.</div>
+                    </div>
+                    <div class="action-row"><div class="action-text">(Sesi Tanya Jawab 2 Menit)</div></div>
+                    <div class="row mc1">
+                        <div class="speaker">MC 1</div>
+                        <div class="text">Waktu tanya jawab telah habis. Beri tepuk tangan yang gemuruh untuk peserta nomor urut <strong>[Sebut Nomor]</strong>! Sungguh karya yang menginspirasi.</div>
                     </div>
                 </div>
 
-                <div class="dialogue mc1" style="margin-top: 5px;">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Dengan berakhirnya tanya jawab peserta ke-10, berakhirlah pula Lomba Cerpen hari ini.</div>
+                <div class="row mc1" style="margin-top: 5px;">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Demikianlah penampilan memukau dari peserta nomor undi 10. Dengan berakhirnya sesi tanya jawab tadi, maka berakhirlah pula seluruh rangkaian perlombaan Cerpen pada hari ini.</div>
                 </div>
             </div>
-            <div class="page-number">05</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step active">Ishoma</div>
-                <div class="step">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">06</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">6. Ice Breaking 2 & ISHOMA</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Karya cerpennya sukses bikin merinding! Sebelum istirahat, panitia masih punya satu Ice Breaking lagi nih! Silakan!</div>
+            <div class="section-title">Ice Breaking 2 & Ishoma <span>6 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Karya-karya cerpennya sukses bikin merinding dan terharu ya! Nggak nyangka ide-idenya sekeren itu.</div>
                 </div>
-                <div class="dialogue"><div class="action">[ Sesi Ice Breaking 2 Berlangsung ]</div></div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Mengingat waktu menunjukkan pukul 11.30, kita jeda sejenak untuk Istirahat dan Shalat Dzuhur di <strong>[Sebut Lokasi]</strong>.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Benar sekali. Namun, sebelum kita beristirahat siang, panitia masih punya satu keseruan Ice Breaking lagi nih! Silakan kepada panitia yang bertugas!</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Sambil istirahat, dijaga juga ya stamina puasanya. Kami ingatkan untuk kembali ke ruangan ini tepat pukul <strong>12.30</strong>!</div>
+                <div class="action-row"><div class="action-text">(Sesi Ice Breaking)</div></div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Seru banget Ice Breaking-nya! Mengingat waktu sudah menunjukkan pukul 11.30 siang, kita akan jeda sejenak untuk Istirahat dan menunaikan Shalat Dzuhur berjamaah.</div>
                 </div>
-                <div class="dialogue"><div class="action">[ 11.30 - 12.30: ISHOMA BERLANGSUNG ]</div></div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Halo semuanya! Selamat datang kembali. Gimana, puasanya masih aman? Sambil kita istirahat tadi, juri sedang bekerja ekstra keras.</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Untuk shalat Dzuhur, teman-teman bisa menuju <strong>[sebutkan lokasi masjid/mushola]</strong>. Sambil istirahat, dijaga juga ya stamina puasanya biar nanti pas pengumuman tetep semangat!</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Betul, kabarnya nilai teman-teman ini tipis-tipis banget! Tapi tentu saja, harus ada yang keluar sebagai pemenang. Jantung rasanya berdebar-debar ya!</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Kami ingatkan kepada seluruh peserta untuk kembali berada di ruangan ini tepat pukul 12.30 karena kita akan langsung masuk ke momen puncak: pengumuman pemenang! Selamat beristirahat dan menunaikan ibadah shalat.</div>
                 </div>
             </div>
-            <div class="page-number">06</div>
         </div>
     </div>
 
     <div class="qcard">
         <div class="sidebar">
-            <div class="brand">
-                <h1>FISCOM</h1>
-                <p>1447 H</p>
-            </div>
-            <div class="timeline">
-                <div class="step">Muqaddimah & Sapaan</div>
-                <div class="step">Agenda</div>
-                <div class="step">Tilawah & Sambutan</div>
-                <div class="step">Esai Ilmiah</div>
-                <div class="step">Lomba Cerpen</div>
-                <div class="step">Ishoma</div>
-                <div class="step active">Closing</div>
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">07</div>
             </div>
         </div>
         <div class="content">
-            <h2 class="card-title">7. Pengumuman Juara & Penutupan</h2>
-            <div class="dialogue-wrapper">
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Untuk membacakan surat keputusan juri sekaligus menyerahkan penghargaan, kami mengundang Bpk/Ibu <strong>[Sebut Nama & Jabatan]</strong> ke panggung. Disilakan.</div>
+            <div class="section-title">Momen Puncak Pengumuman <span>7 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Halo semuanya! Selamat datang kembali di main hall FISCOM. Gimana nih, puasanya masih pada aman kan? Walaupun lagi puasa, semangatnya nggak boleh kendor dong pastinya setelah istirahat dan shalat tadi!</div>
                 </div>
-                <div class="dialogue"><div class="action">[ Proses Pengumuman & Penyerahan Piala ]</div></div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Sekali lagi, tepuk tangan yang meriah! Selamat kepada para pemenang.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Betul sekali. Sambil kita istirahat menenangkan pikiran tadi, ternyata dewan juri kita di ruang sidang sedang bekerja ekstra keras.</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
-                    <div class="text">Bagi yang belum terpanggil, keberanian kalian tampil sudah membuktikan kalian adalah juara. Jadikan ini batu loncatan!</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Iya bener banget! Tadi sempet denger bocoran sedikit nih, katanya dewan juri sampai kebingungan dan harus berdebat lumayan lama karena jarak nilai teman-teman ini tipis-tipis banget! Semua yang tampil hari ini benar-benar luar biasa.</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
-                    <div class="text">Sampailah kita di penghujung acara FISCOM 1447 Hijriah. Terima kasih atas partisipasi semuanya. Mohon untuk seluruh peserta dan juri maju untuk foto bersama.</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Tapi tentu saja, dalam sebuah kompetisi harus ada yang keluar sebagai pemenang. Ini adalah momen yang paling kita tunggu-tunggu sedari pagi. Jantung rasanya berdebar-debar ya! Siapakah yang akan membawa pulang piala Juara Lomba Esai Ilmiah dan Lomba Cerpen FISCOM 1447 Hijriah?</div>
                 </div>
-                <div class="dialogue mc2">
-                    <div class="tag">MC 2</div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Tanpa perlu berlama-lama lagi, untuk membacakan surat keputusan dewan juri sekaligus menyerahkan penghargaan secara langsung kepada para pemenang, kami mengundang dengan hormat <strong>[Sebutkan Nama/Jabatan]</strong> untuk naik ke atas panggung. Kepada Bapak/Ibu <strong>[Sebut Nama]</strong>, disilakan.</div>
+                </div>
+                <div class="action-row"><div class="action-text">(MC menyerahkan mikrofon/map juara ke pembaca pengumuman. Proses Pengumuman & Pemberian Piala berlangsung)</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qcard">
+        <div class="sidebar">
+            <div class="brand"><h1>FISCOM</h1><p>1447 H</p></div>
+            <div class="card-number-wrapper">
+                <div class="card-label">CARD</div>
+                <div class="card-num">08</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="section-title">Penutupan Acara <span>8 / 8</span></div>
+            <div class="dialogue-list">
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Sekali lagi, beri tepuk tangan yang paling meriah! Kami ucapkan selamat kepada para pemenang yang telah menorehkan prestasi gemilangnya hari ini.</div>
+                </div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Dan buat teman-teman yang namanya belum terpanggil, jangan bersedih. Karya dan keberanian kalian tampil di panggung FISCOM ini sudah membuktikan bahwa kalian adalah juara bagi diri sendiri. Jadikan pengalaman hari ini sebagai batu loncatan untuk terus berkarya!</div>
+                </div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Hadirin sekalian, sampailah kita di penghujung acara FISCOM 1447 Hijriah. Kami mewakili segenap panitia mengucapkan terima kasih yang tak terhingga atas partisipasi, antusiasme, dan semangat seluruh peserta, dewan juri, serta tamu undangan dari pagi hingga siang hari ini.</div>
+                </div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
+                    <div class="text">Kami juga memohon maaf yang sebesar-besarnya apabila selama memandu acara, terdapat tutur kata, sikap, atau perbuatan yang kurang berkenan di hati. Semoga sisa ibadah puasa kita hari ini dan sebulan ke depan dilancarkan oleh Allah SWT.</div>
+                </div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
+                    <div class="text">Sebelum kita benar-benar berpisah dan kembali ke tempat masing-masing, kami mohon kepada seluruh peserta, dewan juri, dan panitia untuk maju ke area panggung karena kita akan mengabadikan momen ini dengan sesi foto bersama.</div>
+                </div>
+                <div class="row mc2">
+                    <div class="speaker">MC 2</div>
                     <div class="text">Akhir kata, saya <strong>[Nama Partner]</strong>...</div>
                 </div>
-                <div class="dialogue mc1">
-                    <div class="tag">MC 1</div>
+                <div class="row mc1">
+                    <div class="speaker">MC 1</div>
                     <div class="text">Dan saya <strong>[Nama Kamu]</strong>, pamit undur diri.</div>
                 </div>
-                <div class="dialogue both">
-                    <div class="tag">ALL</div>
+                <div class="row both">
+                    <div class="speaker">BERSAMA</div>
                     <div class="text">Wabillahi taufiq wal hidayah, Wassalamu’alaikum Warahmatullahi Wabarakatuh!</div>
                 </div>
             </div>
-            <div class="page-number">07</div>
         </div>
     </div>
 
